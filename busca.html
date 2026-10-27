@@ -7,12 +7,11 @@
 <title>Busca de Creators Publi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
 <style>
   .faixa { padding-block: 28px 32px; }
   .faixa h1 { font-size: clamp(30px, 5vw, 44px); max-width: none; }
-  .faixa::after { font-size: clamp(120px, 20vw, 200px); }
   .miolo { max-width: 1180px; }
   .entrar { max-width: 420px; display: grid; gap: 14px; }
   .filtros {
@@ -35,7 +34,7 @@
   .topo { display: flex; gap: 14px; align-items: center; min-width: 0; }
   .avatar {
     width: 64px; height: 64px; border-radius: 50%; flex: none; overflow: hidden;
-    background: var(--laranja); color: var(--sobre-laranja);
+    background: var(--degrade); color: #1c1a19;
     display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 22px;
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
@@ -43,11 +42,11 @@
   .card h3 { font-size: 19px; overflow-wrap: anywhere; }
   .meta { color: var(--tinta-suave); font-size: 14px; }
   .redes { display: flex; gap: 12px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
-  .redes a { text-decoration: none; border-bottom: 1.5px solid var(--rosa); }
+  .redes a { text-decoration: none; border-bottom: 1.5px solid var(--carmim); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--superficie); }
   .tag.nicho { background: var(--tinta); color: var(--fundo); }
-  .tag.seg { background: color-mix(in srgb, var(--rosa) 18%, transparent); font-weight: 700; }
+  .tag.seg { background: var(--degrade); color: #1c1a19; font-weight: 700; }
   .bio { font-size: 14px; margin: 0; overflow-wrap: anywhere; }
   .refs { display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; }
   .contato { display: grid; gap: 6px; border-top: 1px solid var(--linha); padding-top: 12px; font-size: 14px; }
@@ -62,9 +61,9 @@
 <body>
 
 <header class="faixa">
-  <div class="faixa-interna" style="max-width:1180px">
-    <div class="marca">Publination · uso interno</div>
-    <h1>Busca de creators</h1>
+  <div class="faixa-interna" style="max-width:1148px">
+    <div class="marca"><span class="marca-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.5 2 5 13.5h6L9.5 22 19 9.5h-6.2L13.5 2Z" fill="#ffd54f" stroke="#1c1a19" stroke-width="1.2" stroke-linejoin="round"/></svg></span><span class="marca-nome"><b>PUBLI</b><span>NATION</span></span><span class="marca-extra">uso interno</span></div>
+    <h1>Busca de <em>creators</em></h1>
   </div>
 </header>
 

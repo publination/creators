@@ -1,32 +1,36 @@
-/* Base de Creators Publi
-   Layout: faixa laranja de abertura com o título grande, conteúdo em coluna única centralizada,
-   seções do formulário separadas por título e linha, chips clicáveis para escolhas múltiplas. */
+/* Base de Creators Publi, na identidade visual da Publination
+   Layout: faixa escura de abertura com a marca e uma barra em degradê embaixo, conteúdo em creme numa coluna,
+   rótulos rosa espaçados no topo de cada bloco, chips em pílula com contorno e preenchimento em degradê. */
 :root {
-  --laranja: #ff6a13;
-  --laranja-forte: #e2540a;
-  --rosa: #ff3e9a;
-  --tinta: #1d1410;
-  --tinta-suave: #6b5a50;
-  --fundo: #ffffff;
-  --superficie: #fff3eb;
-  --linha: #f1dccf;
-  --campo: #ffffff;
-  --sobre-laranja: #1d1410;
-  --erro: #c4252f;
+  --carmim: #d9105a;
+  --laranja: #f0874a;
+  --amarelo: #ffd54f;
+  --degrade: linear-gradient(90deg, #d9105a 0%, #f0874a 60%, #ffd54f 100%);
+  --escuro: #1c1a19;
+  --creme: #fff6cc;
+  --tinta: #1c1a19;
+  --tinta-suave: #6a5f52;
+  --fundo: #fff6cc;
+  --superficie: #fdeeb3;
+  --linha: #ecd9a0;
+  --campo: #fffbe6;
+  --rotulo: #d9105a;
+  --erro: #b3123f;
   --ok: #1f8a4c;
-  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
-  --texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Lexend", "Segoe UI", system-ui, sans-serif;
+  --texto: "Lexend", "Segoe UI", system-ui, -apple-system, sans-serif;
   --raio: 14px;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --tinta: #fbefe7;
-    --tinta-suave: #c3ac9f;
-    --fundo: #17110e;
-    --superficie: #241a15;
-    --linha: #3a2b23;
-    --campo: #1d1612;
-    --erro: #ff6b72;
+    --tinta: #fff6cc;
+    --tinta-suave: #c9bd9c;
+    --fundo: #1c1a19;
+    --superficie: #2a2624;
+    --linha: #433c36;
+    --campo: #242120;
+    --rotulo: #ff5a8f;
+    --erro: #ff6b8e;
     --ok: #4fd18a;
     color-scheme: dark;
   }
@@ -45,54 +49,54 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3 { font-family: var(--display); line-height: 1.08; text-wrap: balance; margin: 0; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; font-weight: 700; }
 
 .faixa {
-  background: var(--laranja);
-  color: var(--sobre-laranja);
-  padding-block: 44px 56px;
+  background: var(--escuro);
+  color: var(--creme);
+  padding-block: 40px 52px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   position: relative;
-  overflow: hidden;
 }
 .faixa::after {
-  content: "#";
-  position: absolute;
-  right: -0.08em;
-  bottom: -0.32em;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(180px, 34vw, 360px);
-  line-height: 1;
-  color: var(--rosa);
-  opacity: 0.9;
-  pointer-events: none;
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0; height: 8px;
+  background: var(--degrade);
 }
-.faixa-interna { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
-.marca {
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: 13px;
-  margin-bottom: 18px;
+.faixa-interna { max-width: 728px; margin: 0 auto; position: relative; }
+.marca { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.marca-icone {
+  width: 40px; height: 40px; border-radius: 50%; flex: none;
+  background: linear-gradient(135deg, #d9105a, #f0874a 70%, #ffd54f);
+  display: grid; place-items: center;
 }
-.faixa h1 { font-size: clamp(38px, 7vw, 64px); font-weight: 800; max-width: 14ch; }
-.faixa p { font-size: 18px; max-width: 46ch; margin: 16px 0 0; }
+.marca-icone svg { width: 20px; height: 20px; }
+.marca-nome { font-size: 20px; font-style: italic; letter-spacing: -0.01em; color: var(--creme); }
+.marca-nome b { font-weight: 800; }
+.marca-nome span { font-weight: 300; }
+.marca-extra { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #ff5a8f; font-weight: 600; margin-left: 6px; }
+.faixa h1 { font-size: clamp(34px, 6.4vw, 56px); max-width: 15ch; color: var(--creme); }
+.faixa h1 em {
+  font-style: normal;
+  background: var(--degrade); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.faixa p { font-size: 18px; max-width: 46ch; margin: 18px 0 0; color: #f3e7bd; font-weight: 300; }
 
 .miolo {
   max-width: 760px;
   margin: 0 auto;
-  padding-block: 32px 64px;
+  padding-block: 36px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 
-.secao { display: grid; gap: 18px; padding-block: 28px; border-top: 1px solid var(--linha); }
+.secao { display: grid; gap: 18px; padding-block: 30px; border-top: 1px solid var(--linha); }
 .secao:first-of-type { border-top: 0; padding-top: 0; }
-.secao h2 { font-size: 24px; font-weight: 700; }
-.secao h2 span { color: var(--laranja); }
-.dica { color: var(--tinta-suave); font-size: 14px; margin: -10px 0 0; }
+.secao h2 {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rotulo);
+}
+.dica { color: var(--tinta-suave); font-size: 14px; margin: -10px 0 0; font-weight: 300; }
 
 .grade { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
 .grade > * { min-width: 0; }
@@ -101,23 +105,24 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.08; text-wrap: balance;
 
 .campo { display: grid; gap: 6px; }
 label, .rotulo { font-weight: 600; font-size: 15px; }
-.opcional { font-weight: 400; color: var(--tinta-suave); font-size: 13px; }
+.opcional { font-weight: 300; color: var(--tinta-suave); font-size: 13px; }
 input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"],
 input[type="password"], input[type="search"], input[type="number"], select, textarea {
   width: 100%;
   font: inherit;
+  font-weight: 400;
   color: var(--tinta);
   background: var(--campo);
   border: 1.5px solid var(--linha);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 12px 14px;
   min-height: 48px;
 }
 textarea { resize: vertical; min-height: 96px; }
 input:focus, select:focus, textarea:focus, button:focus-visible, .chip input:focus-visible + span {
-  outline: 3px solid color-mix(in srgb, var(--laranja) 55%, transparent);
+  outline: 3px solid color-mix(in srgb, var(--carmim) 40%, transparent);
   outline-offset: 1px;
-  border-color: var(--laranja);
+  border-color: var(--carmim);
 }
 .prefixo { position: relative; }
 .prefixo span {
@@ -132,17 +137,18 @@ input:focus, select:focus, textarea:focus, button:focus-visible, .chip input:foc
 .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .chip span {
   display: inline-block;
-  padding: 9px 15px;
+  padding: 9px 16px;
   border-radius: 999px;
-  border: 1.5px solid var(--linha);
+  border: 1.5px solid color-mix(in srgb, var(--carmim) 55%, var(--linha));
   background: var(--campo);
   font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
   user-select: none;
   transition: background .15s, border-color .15s, color .15s;
 }
-.chip input:checked + span { background: var(--tinta); color: var(--fundo); border-color: var(--tinta); }
-.chip input:disabled:not(:checked) + span { opacity: .45; cursor: not-allowed; }
+.chip input:checked + span { background: var(--degrade); color: #1c1a19; border-color: transparent; font-weight: 600; }
+.chip input:disabled:not(:checked) + span { opacity: .4; cursor: not-allowed; }
 
 .foto-area { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 .foto-previa {
@@ -156,24 +162,26 @@ input:focus, select:focus, textarea:focus, button:focus-visible, .chip input:foc
 .consentimento {
   display: flex; gap: 12px; align-items: flex-start;
   background: var(--superficie); border-radius: var(--raio); padding: 16px;
-  font-size: 14px;
+  font-size: 14px; font-weight: 400;
+  border-left: 4px solid var(--carmim);
 }
-.consentimento input { width: 20px; height: 20px; margin-top: 2px; flex: none; accent-color: var(--laranja); }
+.consentimento input { width: 20px; height: 20px; margin-top: 2px; flex: none; accent-color: var(--carmim); }
 
 .botao {
   font: inherit; font-weight: 700; font-size: 17px;
-  background: var(--tinta); color: var(--fundo);
-  border: 0; border-radius: 999px; padding: 16px 28px; cursor: pointer;
+  background: var(--degrade); color: #1c1a19;
+  border: 0; border-radius: 999px; padding: 16px 32px; cursor: pointer;
   min-height: 52px;
+  transition: filter .15s, transform .15s;
 }
-.botao:hover { background: var(--laranja-forte); color: #fff; }
-.botao[disabled] { opacity: .6; cursor: wait; }
+.botao:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.botao[disabled] { opacity: .6; cursor: wait; transform: none; }
 .botao-sec {
   font: inherit; font-weight: 600; font-size: 14px;
   background: transparent; color: var(--tinta);
-  border: 1.5px solid var(--linha); border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  border: 1.5px solid color-mix(in srgb, var(--carmim) 55%, var(--linha)); border-radius: 999px; padding: 8px 16px; cursor: pointer;
 }
-.botao-sec:hover { border-color: var(--tinta); }
+.botao-sec:hover { border-color: var(--carmim); }
 
 .erro-campo { color: var(--erro); font-size: 13px; }
 .aviso { border-radius: var(--raio); padding: 14px 16px; font-size: 15px; }
@@ -183,10 +191,10 @@ input:focus, select:focus, textarea:focus, button:focus-visible, .chip input:foc
 .sucesso { text-align: left; display: grid; gap: 14px; padding-block: 24px; }
 .sucesso h2 { font-size: 34px; }
 .sucesso .selo {
-  width: 64px; height: 64px; border-radius: 50%; background: var(--rosa); color: #fff;
-  display: grid; place-items: center; font-family: var(--display); font-size: 34px; font-weight: 800;
+  width: 64px; height: 64px; border-radius: 50%; background: var(--degrade); color: #1c1a19;
+  display: grid; place-items: center; font-family: var(--display); font-size: 32px; font-weight: 800;
 }
-.rodape { color: var(--tinta-suave); font-size: 13px; margin-top: 28px; }
+.rodape { color: var(--tinta-suave); font-size: 13px; margin-top: 28px; font-weight: 300; }
 .oculto-robo { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
