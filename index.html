@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Base de Creators Publi</title>
+<meta name="description" content="Cadastre seu perfil na base de creators da Publination e seja lembrado nas próximas campanhas.">
+<meta property="og:title" content="Entre para a base de creators da Publi">
+<meta property="og:description" content="Cadastro rápido para ser encontrado nas próximas campanhas da Publination.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="faixa">
+  <div class="faixa-interna">
+    <div class="marca">Publination</div>
+    <h1>Entre para a base de creators da Publi</h1>
+    <p>Quando chegar uma campanha com a sua cara, é aqui que a gente procura. Leva uns 3 minutos.</p>
+  </div>
+</header>
+
+<main class="miolo">
+  <form id="form" novalidate>
+    <div class="oculto-robo" aria-hidden="true">
+      <label for="site">Não preencha</label>
+      <input type="text" id="site" name="site" tabindex="-1" autocomplete="off">
+    </div>
+
+    <section class="secao">
+      <h2>Quem é você</h2>
+      <div class="grade">
+        <div class="campo inteiro">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" autocomplete="name" maxlength="120" required>
+        </div>
+        <div class="campo">
+          <label for="nascimento">Data de nascimento</label>
+          <input type="date" id="nascimento" name="nascimento" required>
+        </div>
+        <div class="campo">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado" required>
+            <option value="">Selecione</option>
+          </select>
+        </div>
+        <div class="campo inteiro">
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
+        </div>
+        <div class="campo inteiro" id="bloco-responsavel" hidden>
+          <label for="responsavel">Nome do responsável legal</label>
+          <input type="text" id="responsavel" name="responsavel" maxlength="120">
+          <p class="dica" style="margin:0">Como você tem menos de 18 anos, o cadastro precisa ser feito com o seu responsável.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2>Suas redes</h2>
+      <div class="grade">
+        <div class="campo">
+          <label for="instagram">Instagram</label>
+          <div class="prefixo"><span>@</span><input type="text" id="instagram" name="instagram" autocapitalize="none" autocomplete="off" spellcheck="false" maxlength="60" required></div>
+        </div>
+        <div class="campo">
+          <label for="tiktok">TikTok <span class="opcional">(opcional)</span></label>
+          <div class="prefixo"><span>@</span><input type="text" id="tiktok" name="tiktok" autocapitalize="none" autocomplete="off" spellcheck="false" maxlength="60"></div>
+        </div>
+        <div class="campo inteiro">
+          <span class="rotulo" id="rot-seguidores">Quantos seguidores você tem no Instagram?</span>
+          <div class="chips" role="radiogroup" aria-labelledby="rot-seguidores" data-grupo="seguidores"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2>Seu conteúdo</h2>
+      <div class="campo">
+        <span class="rotulo" id="rot-nichos">Em quais nichos você atua?</span>
+        <p class="dica" style="margin:0">Escolha até 3.</p>
+        <div class="chips" role="group" aria-labelledby="rot-nichos" data-grupo="nichos"></div>
+        <input type="text" id="nicho-outro" name="nichoOutro" placeholder="Qual outro nicho?" maxlength="60" hidden>
+      </div>
+      <div class="campo">
+        <span class="rotulo" id="rot-formatos">Que formatos você produz?</span>
+        <div class="chips" role="group" aria-labelledby="rot-formatos" data-grupo="formatos"></div>
+      </div>
+      <div class="campo">
+        <label for="ref1">Conteúdos de referência</label>
+        <p class="dica" style="margin:0">Cole o link de até 3 posts ou vídeos que mostram bem o seu trabalho.</p>
+        <input type="url" id="ref1" name="ref1" placeholder="https://www.instagram.com/reel/..." inputmode="url" required>
+        <input type="url" id="ref2" name="ref2" placeholder="Outro link (opcional)" inputmode="url">
+        <input type="url" id="ref3" name="ref3" placeholder="Outro link (opcional)" inputmode="url">
+      </div>
+      <div class="campo">
+        <label for="bio">Bio curta <span class="opcional">(opcional)</span></label>
+        <textarea id="bio" name="bio" maxlength="200" placeholder="Conte em poucas palavras sobre você e o seu conteúdo."></textarea>
+        <div class="contador"><span id="bio-conta">0</span>/200</div>
+      </div>
+      <div class="campo">
+        <span class="rotulo">Foto de perfil <span class="opcional">(opcional)</span></span>
+        <div class="foto-area">
+          <div class="foto-previa" id="foto-previa">Sem foto</div>
+          <div style="display:grid;gap:8px">
+            <label class="botao-sec" for="foto" style="text-align:center">Escolher foto</label>
+            <input type="file" id="foto" accept="image/*" hidden>
+            <button type="button" class="botao-sec" id="foto-remover" hidden>Remover</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2>Contato</h2>
+      <div class="grade">
+        <div class="campo">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 91234-5678" autocomplete="tel" inputmode="tel" maxlength="20" required>
+        </div>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required>
+        </div>
+      </div>
+      <label class="consentimento" for="lgpd">
+        <input type="checkbox" id="lgpd" name="lgpd" required>
+        <span id="texto-lgpd">Autorizo a Publination a guardar estes dados e a entrar em contato comigo sobre campanhas e oportunidades. Posso pedir a exclusão do meu cadastro a qualquer momento.</span>
+      </label>
+    </section>
+
+    <div id="aviso" class="aviso erro" role="alert" hidden></div>
+    <div style="margin-top:20px">
+      <button type="submit" class="botao" id="enviar">Enviar meu cadastro</button>
+    </div>
+    <p class="rodape">Seus dados ficam guardados com a equipe da Publination e são usados só para encontrar creators para campanhas. Para corrigir ou excluir o seu cadastro, fale com a gente pelo Instagram da Publination.</p>
+  </form>
+
+  <div id="sucesso" class="sucesso" hidden>
+    <div class="selo">✓</div>
+    <h2>Cadastro feito!</h2>
+    <p>Agora você faz parte da base de creators da Publi. Quando surgir uma campanha com o seu perfil, a gente chama no WhatsApp ou no e-mail que você deixou.</p>
+    <p>Se mudar alguma coisa, como número ou faixa de seguidores, é só preencher de novo com o mesmo @. A gente considera sempre o cadastro mais recente.</p>
+  </div>
+</main>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  var ESTADOS = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
+  var SEGUIDORES = ["Até 10 mil","10 a 50 mil","50 a 100 mil","100 a 500 mil","500 mil a 1 milhão","Mais de 1 milhão"];
+  var NICHOS = ["Moda","Beleza","Lifestyle","Fitness","Saúde e bem-estar","Gastronomia","Maternidade e família","Humor","Games","Tecnologia","Viagem","Finanças","Educação","Empreendedorismo","Casa e decoração","Pets","Esportes","Música","Arte e cultura","Automotivo","Outro"];
+  var FORMATOS = ["Reels","Stories","Feed (foto ou carrossel)","TikTok","YouTube","UGC","Lives","Presença em eventos"];
+  var MAX_NICHOS = 3;
+
+  var form = document.getElementById("form");
+  var selEstado = document.getElementById("estado");
+  ESTADOS.forEach(function (uf) { var o = document.createElement("option"); o.value = uf; o.textContent = uf; selEstado.appendChild(o); });
+
+  function montarChips(grupo, itens, tipo) {
+    var box = document.querySelector('[data-grupo="' + grupo + '"]');
+    itens.forEach(function (t, i) {
+      var l = document.createElement("label"); l.className = "chip";
+      var inp = document.createElement("input"); inp.type = tipo; inp.name = grupo; inp.value = t; inp.id = grupo + "-" + i;
+      var s = document.createElement("span"); s.textContent = t;
+      l.appendChild(inp); l.appendChild(s); box.appendChild(l);
+    });
+    return box;
+  }
+  montarChips("seguidores", SEGUIDORES, "radio");
+  var boxNichos = montarChips("nichos", NICHOS, "checkbox");
+  montarChips("formatos", FORMATOS, "checkbox");
+
+  var nichoOutro = document.getElementById("nicho-outro");
+  boxNichos.addEventListener("change", function () {
+    var marcados = boxNichos.querySelectorAll("input:checked");
+    boxNichos.querySelectorAll("input").forEach(function (i) { i.disabled = !i.checked && marcados.length >= MAX_NICHOS; });
+    var outro = boxNichos.querySelector('input[value="Outro"]').checked;
+    nichoOutro.hidden = !outro;
+  });
+
+  // Menor de idade
+  var nasc = document.getElementById("nascimento");
+  var blocoResp = document.getElementById("bloco-responsavel");
+  var textoLgpd = document.getElementById("texto-lgpd");
+  var TEXTO_ADULTO = textoLgpd.textContent;
+  function idade(iso) {
+    if (!iso) return null;
+    var p = iso.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    if (isNaN(d)) return null;
+    var h = new Date(); var a = h.getFullYear() - d.getFullYear();
+    if (h.getMonth() < d.getMonth() || (h.getMonth() === d.getMonth() && h.getDate() < d.getDate())) a--;
+    return a;
+  }
+  nasc.max = new Date().toISOString().slice(0, 10);
+  nasc.addEventListener("change", function () {
+    var a = idade(nasc.value);
+    var menor = a !== null && a < 18;
+    blocoResp.hidden = !menor;
+    textoLgpd.textContent = menor
+      ? "Sou o responsável legal por este creator e autorizo a Publination a guardar estes dados e a entrar em contato sobre campanhas e oportunidades. Posso pedir a exclusão do cadastro a qualquer momento."
+      : TEXTO_ADULTO;
+  });
+
+  // Máscara de WhatsApp
+  var whats = document.getElementById("whatsapp");
+  whats.addEventListener("input", function () {
+    var d = whats.value.replace(/\D/g, "").slice(0, 11);
+    var out = d;
+    if (d.length > 2) out = "(" + d.slice(0, 2) + ") " + d.slice(2);
+    if (d.length > 7) out = "(" + d.slice(0, 2) + ") " + d.slice(2, 7) + "-" + d.slice(7);
+    whats.value = out;
+  });
+
+  // Limpa @ e links colados
+  function limparArroba(v) {
+    v = (v || "").trim();
+    var m = v.match(/(?:instagram\.com|tiktok\.com)\/@?([A-Za-z0-9._]+)/i);
+    if (m) v = m[1];
+    return v.replace(/^@+/, "").replace(/[^A-Za-z0-9._]/g, "").toLowerCase();
+  }
+  ["instagram", "tiktok"].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener("blur", function () { el.value = limparArroba(el.value); });
+  });
+
+  var bio = document.getElementById("bio");
+  bio.addEventListener("input", function () { document.getElementById("bio-conta").textContent = bio.value.length; });
+
+  // Foto: reduz para no máximo 480px antes de enviar
+  var fotoDados = "";
+  var inpFoto = document.getElementById("foto");
+  var previa = document.getElementById("foto-previa");
+  var btnRemover = document.getElementById("foto-remover");
+  inpFoto.addEventListener("change", function () {
+    var f = inpFoto.files && inpFoto.files[0];
+    if (!f) return;
+    var leitor = new FileReader();
+    leitor.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var lado = Math.min(img.width, img.height);
+        var alvo = Math.min(480, lado);
+        var c = document.createElement("canvas"); c.width = alvo; c.height = alvo;
+        var sx = (img.width - lado) / 2, sy = (img.height - lado) / 2;
+        c.getContext("2d").drawImage(img, sx, sy, lado, lado, 0, 0, alvo, alvo);
+        fotoDados = c.toDataURL("image/jpeg", 0.82);
+        previa.innerHTML = ""; var i = new Image(); i.src = fotoDados; i.alt = "Prévia da foto"; previa.appendChild(i);
+        btnRemover.hidden = false;
+      };
+      img.onerror = function () { mostrarAviso("Não conseguimos abrir essa imagem. Tente uma foto em JPG ou PNG."); };
+      img.src = leitor.result;
+    };
+    leitor.readAsDataURL(f);
+  });
+  btnRemover.addEventListener("click", function () {
+    fotoDados = ""; inpFoto.value = ""; previa.textContent = "Sem foto"; btnRemover.hidden = true;
+  });
+
+  var aviso = document.getElementById("aviso");
+  function mostrarAviso(t) { aviso.textContent = t; aviso.hidden = false; aviso.scrollIntoView({ behavior: "smooth", block: "center" }); }
+
+  function valores(nome) {
+    return Array.prototype.map.call(form.querySelectorAll('input[name="' + nome + '"]:checked'), function (i) { return i.value; });
+  }
+  function urlValida(u) { return /^https?:\/\/\S+\.\S+/i.test(u); }
+
+  function validar() {
+    form.querySelectorAll(".invalido").forEach(function (e) { e.classList.remove("invalido"); });
+    var faltando = [];
+    function exigir(id, rotulo, ok) {
+      var el = document.getElementById(id);
+      var valido = ok !== undefined ? ok : !!el.value.trim();
+      if (!valido) { el.classList.add("invalido"); faltando.push(rotulo); }
+    }
+    exigir("nome", "nome");
+    exigir("nascimento", "data de nascimento");
+    exigir("estado", "estado");
+    exigir("cidade", "cidade");
+    var a = idade(nasc.value);
+    if (a !== null && a < 18) exigir("responsavel", "nome do responsável");
+    document.getElementById("instagram").value = limparArroba(document.getElementById("instagram").value);
+    document.getElementById("tiktok").value = limparArroba(document.getElementById("tiktok").value);
+    exigir("instagram", "Instagram");
+    if (!valores("seguidores").length) faltando.push("faixa de seguidores");
+    if (!valores("nichos").length) faltando.push("nicho");
+    if (valores("nichos").indexOf("Outro") > -1) exigir("nicho-outro", "qual outro nicho");
+    if (!valores("formatos").length) faltando.push("formatos");
+    exigir("ref1", "conteúdo de referência", urlValida(document.getElementById("ref1").value.trim()));
+    ["ref2", "ref3"].forEach(function (id) { var v = document.getElementById(id).value.trim(); if (v) exigir(id, "link de referência válido", urlValida(v)); });
+    exigir("whatsapp", "WhatsApp", whats.value.replace(/\D/g, "").length >= 10);
+    exigir("email", "e-mail", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById("email").value.trim()));
+    if (!document.getElementById("lgpd").checked) faltando.push("autorização de uso dos dados");
+    return faltando;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    aviso.hidden = true;
+    var faltando = validar();
+    if (faltando.length) { mostrarAviso("Falta preencher: " + faltando.join(", ") + "."); return; }
+    var url = window.BASE_PUBLI && window.BASE_PUBLI.SCRIPT_URL;
+    if (!url || url.indexOf("http") !== 0) { mostrarAviso("O cadastro ainda não está conectado à planilha. Avise a equipe da Publi."); return; }
+
+    var nichos = valores("nichos").filter(function (n) { return n !== "Outro"; });
+    if (!nichoOutro.hidden && nichoOutro.value.trim()) nichos.push(nichoOutro.value.trim());
+    var dados = {
+      site: document.getElementById("site").value,
+      nome: document.getElementById("nome").value.trim(),
+      nascimento: nasc.value,
+      responsavel: blocoResp.hidden ? "" : document.getElementById("responsavel").value.trim(),
+      estado: selEstado.value,
+      cidade: document.getElementById("cidade").value.trim(),
+      instagram: document.getElementById("instagram").value,
+      tiktok: document.getElementById("tiktok").value,
+      seguidores: valores("seguidores")[0],
+      nichos: nichos.join(", "),
+      formatos: valores("formatos").join(", "),
+      ref1: document.getElementById("ref1").value.trim(),
+      ref2: document.getElementById("ref2").value.trim(),
+      ref3: document.getElementById("ref3").value.trim(),
+      bio: bio.value.trim(),
+      whatsapp: whats.value,
+      email: document.getElementById("email").value.trim(),
+      foto: fotoDados
+    };
+
+    var btn = document.getElementById("enviar");
+    btn.disabled = true; btn.textContent = "Enviando...";
+    fetch(url, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res || !res.ok) throw new Error((res && res.erro) || "erro");
+        form.hidden = true;
+        document.getElementById("sucesso").hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      })
+      .catch(function () {
+        mostrarAviso("Não conseguimos enviar agora. Confira sua internet e tente de novo em alguns segundos.");
+        btn.disabled = false; btn.textContent = "Enviar meu cadastro";
+      });
+  });
+})();
+</script>
+</body>
+</html>
